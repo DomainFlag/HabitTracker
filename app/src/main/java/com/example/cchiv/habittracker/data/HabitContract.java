@@ -16,6 +16,7 @@ public class HabitContract {
 
         public static final String _ID = BaseColumns._ID;
         public static final String COLUMN_HABIT_NAME = "name";
+        public static final String COLUMN_HABIT_OCCURRENCES = "occurrences";
         public static final String COLUMN_HABIT_DATE = "date";
     }
 }

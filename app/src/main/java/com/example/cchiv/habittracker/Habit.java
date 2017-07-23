@@ -7,10 +7,12 @@ package com.example.cchiv.habittracker;
 public class Habit {
 
     private String habit;
+    private int occurrences;
     private String date;
 
-    public Habit(String string1, String string2) {
+    public Habit(String string1, int int1, String string2) {
         habit = string1;
+        occurrences = int1;
         date = string2;
     }
 
@@ -21,4 +23,6 @@ public class Habit {
     public String getDate() {
         return date;
     }
+
+    public int getOccurrences() { return occurrences; }
 }

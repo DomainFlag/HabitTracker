@@ -22,6 +22,11 @@
             android:inputType="text"
             android:hint="Enter an habit."/>
 
+        <Spinner
+            android:id="@+id/spinner_habit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/submit_habit"
             android:layout_width="wrap_content"

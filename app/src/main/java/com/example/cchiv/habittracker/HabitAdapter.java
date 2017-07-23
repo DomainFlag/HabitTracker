@@ -24,7 +24,7 @@ public class HabitAdapter extends ArrayAdapter<Habit> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        
+
         if(convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.habit_layout, parent, false);
 
@@ -34,6 +34,9 @@ public class HabitAdapter extends ArrayAdapter<Habit> {
 
         textView = (TextView) convertView.findViewById(R.id.habit_text);
         textView.setText(habit.getHabit());
+
+        textView = (TextView) convertView.findViewById(R.id.habit_occurrences);
+        textView.setText(String.valueOf(habit.getOccurrences()));
 
         textView = (TextView) convertView.findViewById(R.id.habit_date);
         textView.setText(habit.getDate());
