@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HabitDbHelper habitDbHelper = new HabitDbHelper(getBaseContext());
-                SQLiteDatabase db = habitDbHelper.getWritableDatabase();
-
                 TextView textView;
 
                 textView = (EditText) findViewById(R.id.edit_habit);
@@ -63,16 +60,23 @@ public class MainActivity extends AppCompatActivity {
 
                 int occurrences = (int) spinner.getSelectedItem();
 
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(HabitEntry.COLUMN_HABIT_NAME, habitText);
-                contentValues.put(HabitEntry.COLUMN_HABIT_OCCURRENCES, occurrences);
-                contentValues.put(HabitEntry.COLUMN_HABIT_DATE, habitDate);
-
-                db.insert(HabitEntry.TABLE_NAME, null, contentValues);
-
-                parseDataDb(fetchDataDb());
+                insertDataDB(habitText, occurrences, habitDate);
             }
         });
+    }
+
+    public void insertDataDB(String habitText, int occurrences, String habitDate) {
+        HabitDbHelper habitDbHelper = new HabitDbHelper(getBaseContext());
+        SQLiteDatabase db = habitDbHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(HabitEntry.COLUMN_HABIT_NAME, habitText);
+        contentValues.put(HabitEntry.COLUMN_HABIT_OCCURRENCES, occurrences);
+        contentValues.put(HabitEntry.COLUMN_HABIT_DATE, habitDate);
+
+        db.insert(HabitEntry.TABLE_NAME, null, contentValues);
+
+        parseDataDb(fetchDataDb());
     }
 
     public Cursor fetchDataDb() {
